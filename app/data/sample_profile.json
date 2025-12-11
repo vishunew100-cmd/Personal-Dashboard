@@ -1,0 +1,92 @@
+{
+  "identity": {
+    "name": "James L. Danforth",
+    "dob": "1982-09-30",
+    "age": 43,
+    "current_address": "11 Ross Dr, Moraga, CA 94556",
+    "aliases": ["Jay L. Danforth"],
+    "ssn_masked": "XXX-XX-1234"
+  },
+  "contacts": {
+    "phones": ["650-207-2484", "415-852-0445"],
+    "emails": ["jaydanforth@gmail.com"]
+  },
+  "kpis": {
+    "open_accounts": 3,
+    "closed_accounts": 3,
+    "total_credit_limit": 49200,
+    "current_total_balance": 10127
+  },
+  "accounts": [
+    {
+      "creditor": "JPMCB Card Services",
+      "opened": "2011-12-22",
+      "type": "Revolving",
+      "balance": 1049,
+      "limit": 8600,
+      "status": "Current"
+    },
+    {
+      "creditor": "JPMCB Card Services",
+      "opened": "2014-08-07",
+      "type": "Revolving",
+      "balance": 8054,
+      "limit": 26100,
+      "status": "Current"
+    },
+    {
+      "creditor": "Apple Card (Goldman Sachs)",
+      "opened": "2024-10-01",
+      "type": "Revolving",
+      "balance": 1024,
+      "limit": 14500,
+      "status": "Current"
+    }
+  ],
+  "addresses_timeline": [
+    "406 Monterey Pl, Los Altos, CA 94022",
+    "1937 Buchanan St, San Francisco, CA 94115",
+    "11 Ross Dr, Moraga, CA 94556"
+  ],
+  "education": [
+    {
+      "school": "University of Oxford - Saïd Business School",
+      "degree": "MBA",
+      "start": "2013-01-01",
+      "end": "2014-12-31"
+    }
+  ],
+  "jobs": [
+    {
+      "company": "Peakline Partners",
+      "title": "Managing Director",
+      "start": "2023-05-01"
+    }
+  ],
+  "family": {
+    "core": [
+      {"name": "Lee James Danforth", "age": 76, "relation": "Father"},
+      {"name": "Kathleen J. Danforth", "age": 78, "relation": "Mother"}
+    ]
+  },
+  "associates": [
+    {"name": "Gregory Wayne Oden", "age": 37, "location": "Dublin, OH"}
+  ],
+  "neighbors": [
+    {"name": "William J. Knudson", "age": 41, "address": "10 Ross Dr, Moraga, CA"}
+  ],
+  "network": {
+    "addresses": [
+      {"id": "addr_1", "label": "11 Ross Dr, Moraga, CA"},
+      {"id": "addr_2", "label": "406 Monterey Pl, Los Altos, CA"}
+    ],
+    "people": [
+      {"id": "p_1", "label": "James L. Danforth"},
+      {"id": "p_2", "label": "Brian Danforth"}
+    ],
+    "edges": [
+      {"from": "addr_1", "to": "p_1"},
+      {"from": "addr_2", "to": "p_2"}
+    ]
+  }
+}
