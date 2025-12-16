@@ -1,0 +1,127 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script src="lib/bindings/utils.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 650px;
+                 background-color: #222;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"color": "#3b82f6", "font": {"color": "white"}, "id": "ROOT", "label": "James L. Danforth", "shape": "dot", "size": 40, "title": "\u003cb\u003ePrimary Person:\u003c/b\u003e James L. Danforth"}, {"color": "#16a34a", "font": {"color": "white"}, "id": "FAMILY", "label": "Family", "shape": "box", "size": 30}, {"color": "#22c55e", "font": {"color": "white"}, "id": "CORE_FAMILY", "label": "Core Family", "shape": "box", "size": 30}, {"color": "#86efac", "font": {"color": "white"}, "id": "EXTENDED_FAMILY", "label": "Extended Family", "shape": "box", "size": 30}, {"color": "#fbbf24", "font": {"color": "white"}, "id": "ASSOCIATES", "label": "Associates", "shape": "box", "size": 30}, {"color": "#f87171", "font": {"color": "white"}, "id": "NEIGHBORS", "label": "Neighbors", "shape": "box", "size": 30}, {"color": "#4ade80", "font": {"color": "white"}, "id": "Lee James Danforth_core", "label": "Father", "shape": "dot", "title": "\u003cb\u003eName:\u003c/b\u003e Lee James Danforth\u003cbr\u003e\u003cb\u003eRelation:\u003c/b\u003e Father\u003cbr\u003e\u003cb\u003eAge:\u003c/b\u003e 76", "width_constraint": {"maximum": 200}}, {"color": "#4ade80", "font": {"color": "white"}, "id": "Kathleen J. Danforth_core", "label": "Mother", "shape": "dot", "title": "\u003cb\u003eName:\u003c/b\u003e Kathleen J. Danforth\u003cbr\u003e\u003cb\u003eRelation:\u003c/b\u003e Mother\u003cbr\u003e\u003cb\u003eAge:\u003c/b\u003e 78", "width_constraint": {"maximum": 200}}, {"color": "#4ade80", "font": {"color": "white"}, "id": "Bryan Reed Danforth_core", "label": "Brother", "shape": "dot", "title": "\u003cb\u003eName:\u003c/b\u003e Bryan Reed Danforth\u003cbr\u003e\u003cb\u003eRelation:\u003c/b\u003e Brother\u003cbr\u003e\u003cb\u003eAge:\u003c/b\u003e 40", "width_constraint": {"maximum": 200}}, {"color": "#4ade80", "font": {"color": "white"}, "id": "Laura N. Woolston_core", "label": "Spouse", "shape": "dot", "title": "\u003cb\u003eName:\u003c/b\u003e Laura N. Woolston\u003cbr\u003e\u003cb\u003eRelation:\u003c/b\u003e Spouse\u003cbr\u003e\u003cb\u003eAge:\u003c/b\u003e 40", "width_constraint": {"maximum": 200}}, {"color": "#86efac", "font": {"color": "white"}, "id": "Brian Danforth_extended", "label": "Uncle", "shape": "dot", "title": "\u003cb\u003eName:\u003c/b\u003e Brian Danforth\u003cbr\u003e\u003cb\u003eRelation:\u003c/b\u003e Uncle\u003cbr\u003e\u003cb\u003eAge:\u003c/b\u003e 45", "width_constraint": {"maximum": 200}}, {"color": "#86efac", "font": {"color": "white"}, "id": "Susan Danforth_extended", "label": "Aunt", "shape": "dot", "title": "\u003cb\u003eName:\u003c/b\u003e Susan Danforth\u003cbr\u003e\u003cb\u003eRelation:\u003c/b\u003e Aunt\u003cbr\u003e\u003cb\u003eAge:\u003c/b\u003e 43", "width_constraint": {"maximum": 200}}, {"color": "#fde047", "font": {"color": "white"}, "id": "Gregory Wayne Oden_associate", "label": "Gregory Wayne Oden", "shape": "dot", "title": "\u003cb\u003eName:\u003c/b\u003e Gregory Wayne Oden\u003cbr\u003e\u003cb\u003eRelation:\u003c/b\u003e Associate\u003cbr\u003e\u003cb\u003eAge:\u003c/b\u003e 37\u003cbr\u003e\u003cb\u003eLocation:\u003c/b\u003e Dublin, OH", "width_constraint": {"maximum": 200}}, {"color": "#fca5a5", "font": {"color": "white"}, "id": "William J. Knudson_neighbor", "label": "William J. Knudson", "shape": "dot", "title": "\u003cb\u003eName:\u003c/b\u003e William J. Knudson\u003cbr\u003e\u003cb\u003eRelation:\u003c/b\u003e Neighbor\u003cbr\u003e\u003cb\u003eAge:\u003c/b\u003e 41\u003cbr\u003e\u003cb\u003eAddress:\u003c/b\u003e 10 Ross Dr, Moraga, CA", "width_constraint": {"maximum": 200}}]);
+                  edges = new vis.DataSet([{"from": "ROOT", "to": "FAMILY"}, {"from": "FAMILY", "to": "CORE_FAMILY"}, {"from": "FAMILY", "to": "EXTENDED_FAMILY"}, {"from": "ROOT", "to": "ASSOCIATES"}, {"from": "ROOT", "to": "NEIGHBORS"}, {"from": "CORE_FAMILY", "to": "Lee James Danforth_core"}, {"from": "CORE_FAMILY", "to": "Kathleen J. Danforth_core"}, {"from": "CORE_FAMILY", "to": "Bryan Reed Danforth_core"}, {"from": "CORE_FAMILY", "to": "Laura N. Woolston_core"}, {"from": "EXTENDED_FAMILY", "to": "Brian Danforth_extended"}, {"from": "EXTENDED_FAMILY", "to": "Susan Danforth_extended"}, {"from": "ASSOCIATES", "to": "Gregory Wayne Oden_associate"}, {"from": "NEIGHBORS", "to": "William J. Knudson_neighbor"}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {"layout": {"hierarchical": {"enabled": true, "levelSeparation": 180, "nodeSpacing": 400, "direction": "UD", "sortMethod": "directed"}}, "nodes": {"shape": "dot", "size": 18, "font": {"color": "white", "size": 16, "face": "Arial"}}, "edges": {"color": "#999", "smooth": true}};
+
+                  
+
+
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+
+                  
+
+
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>

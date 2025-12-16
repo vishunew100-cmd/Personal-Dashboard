@@ -4,89 +4,253 @@
     "dob": "1982-09-30",
     "age": 43,
     "current_address": "11 Ross Dr, Moraga, CA 94556",
-    "aliases": ["Jay L. Danforth"],
-    "ssn_masked": "XXX-XX-1234"
+    "aliases": ["Jay L. Danforth", "James Lee Danforth", "James Danforth"],
+    "ssn": "605-03-5594",
+    "DL": "",
+    "MMN": ""
   },
+
+  "username": ["jamesdanforth", "jaydanforth"],
+
   "contacts": {
-    "phones": ["650-207-2484", "415-852-0445"],
-    "emails": ["jaydanforth@gmail.com"]
+    "phones": ["650-207-2484", "415-852-0445", "415-416-6034", "415-346-6133"],
+    "emails": [
+      "jaydanforth@gmail.com",
+      "jddanforth@aol.com",
+      "james@truecapitalmgmt.com",
+      "jdanforth@cressetpartners.com",
+      "jdanforth@tweisel.com",
+      "danforth@callan.com",
+      "jdanforth@packard.org",
+      "laura.woolston@gmail.com",
+      "lilgjs94@yahoo.com",
+      "kkdanforth@aol.com"
+    ]
   },
+
   "kpis": {
     "open_accounts": 3,
     "closed_accounts": 3,
     "total_credit_limit": 49200,
     "current_total_balance": 10127
   },
-  "accounts": [
+
+  "criminal_history": {
+    "case_numbers": ["BB302017"],
+    "crime": "NA"
+  },
+
+  "addresses_timeline": [
+    {
+      "place": "406 Monterey Pl, Los Altos, CA 94022, USA",
+      "google_maps_link": "https://maps.google.com/?q=406+Monterey+Pl,+Los+Altos,+CA+94022,+USA",
+      "started": "-",
+      "left": "-",
+      "remarks": "NA"
+    },
+    {
+      "place": "1937 Buchanan St, San Francisco, CA 94115, USA",
+      "google_maps_link": "https://maps.google.com/?q=1937+Buchanan+St,+San+Francisco,+CA+94115,+USA",
+      "started": "2006",
+      "left": "2010",
+      "remarks": "NA"
+    },
+    {
+      "place": "2264 Bush St, San Francisco, CA 94115, USA",
+      "google_maps_link": "https://maps.google.com/?q=2264+Bush+St,+San+Francisco,+CA+94115,+USA",
+      "started": "2008",
+      "left": "2011",
+      "remarks": "NA"
+    },
+    {
+      "place": "3130 Webster St, San Francisco, CA 94123, USA",
+      "google_maps_link": "https://maps.google.com/?q=3130+Webster+St,+San+Francisco,+CA+94123,+USA",
+      "started": "2011",
+      "left": "2018",
+      "remarks": "NA"
+    },
+    {
+      "place": "11 Ross Dr, Moraga, CA 94556, USA",
+      "google_maps_link": "https://maps.google.com/?q=11+Ross+Dr,+Moraga,+CA+94556,+USA",
+      "started": "2016",
+      "left": "Present",
+      "remarks": "Owned"
+    }
+  ],
+
+  "education": [
+    {
+      "school": "University of Oxford",
+      "degree": "MBA",
+      "years": "2013-2014",
+      "remarks": "Saïd Business School"
+    },
+    {
+      "school": "Bucknell University",
+      "degree": "NA",
+      "years": "2001-2005",
+      "remarks": "No degree listed"
+    },
+    {
+      "school": "Los Altos High School",
+      "degree": "NA",
+      "years": "-",
+      "remarks": "No degree listed"
+    }
+  ],
+
+  "jobs": [
+    {
+      "company": "Peakline Partners",
+      "title": "Managing Director/Co-Head of Venture",
+      "start": "2023",
+      "end": "-"
+    },
+    {
+      "company": "Cresset Partners",
+      "title": "Director",
+      "start": "2023",
+      "end": "-"
+    },
+    {
+      "company": "True Capital Management",
+      "title": "Investment Management",
+      "start": "2015",
+      "end": "2023"
+    },
+    {
+      "company": "Callan Associates",
+      "title": "Investment Management",
+      "start": "2008",
+      "end": "2013"
+    },
+    {
+      "company": "Packard Foundation",
+      "title": "Financial Analyst (Philanthropy)",
+      "start": "2007",
+      "end": "2008"
+    },
+    {
+      "company": "Thomas Weisel Partners",
+      "title": "PCSA (Investment Banking)",
+      "start": "2006",
+      "end": "2007"
+    },
+    {
+      "company": "WestEnd Capital Management",
+      "title": "Operations Manager",
+      "start": "2005",
+      "end": "2007"
+    },
+    {
+      "company": "Trusted Insight Inc.",
+      "title": "Role not listed",
+      "start": "-",
+      "end": "-"
+    },
+    {
+      "company": "Stock Baron",
+      "title": "Role not listed",
+      "start": "-",
+      "end": "-"
+    }
+  ],
+
+  "family": {
+    "core": [
+      { "name": "Lee James Danforth", "age": 76, "relation": "Father" },
+      { "name": "Kathleen J. Danforth", "age": 78, "relation": "Mother" },
+      { "name": "Bryan Reed Danforth", "age": 40, "relation": "Brother" },
+      { "name": "Laura N. Woolston", "age": 40, "relation": "Spouse" }
+    ],
+    "extended": [
+      { "name": "Brian Danforth", "age": 45, "relation": "Uncle" },
+      { "name": "Susan Danforth", "age": 43, "relation": "Aunt" }
+    ]
+  },
+
+  "associates": [
+    { "name": "Gregory Wayne Oden", "age": 37, "location": "Dublin, OH" }
+  ],
+
+  "neighbors": [
+    { "name": "William J. Knudson", "age": 41, "address": "10 Ross Dr, Moraga, CA" }
+  ],
+
+  "social_profiles": {
+    "LinkedIn": "https://www.linkedin.com/in/james-danforth-9b7244b/",
+    "Facebook": "https://www.facebook.com/jay.danforth.5",
+    "Twitter": "https://twitter.com/jaydanforth",
+    "Instagram": "https://www.instagram.com/jaydanforth/",
+    "Flickr": "https://www.flickr.com/people/jamesldanforth/",
+    "Myspace": "https://myspace.com/jaydanforth"
+  },
+
+  "open_accounts": [
     {
       "creditor": "JPMCB Card Services",
       "opened": "2011-12-22",
-      "type": "Revolving",
-      "balance": 1049,
-      "limit": 8600,
-      "status": "Current"
+      "past_due": 0,
+      "current_balance": 1049,
+      "credit_limit": 8600,
+      "high_balance": 8600,
+      "status": "Current",
+      "last_payment": "2025-10-06",
+      "updated": "2025-10-26"
     },
     {
       "creditor": "JPMCB Card Services",
       "opened": "2014-08-07",
-      "type": "Revolving",
-      "balance": 8054,
-      "limit": 26100,
-      "status": "Current"
+      "past_due": 0,
+      "current_balance": 8054,
+      "credit_limit": 26100,
+      "high_balance": 26100,
+      "status": "Current",
+      "last_payment": "2025-10-06",
+      "updated": "2025-10-24"
     },
     {
       "creditor": "Apple Card (Goldman Sachs)",
       "opened": "2024-10-01",
-      "type": "Revolving",
-      "balance": 1024,
-      "limit": 14500,
-      "status": "Current"
+      "past_due": 75,
+      "current_balance": 1024,
+      "credit_limit": 14500,
+      "high_balance": 14500,
+      "status": "Current",
+      "last_payment": "",
+      "updated": "2025-10-01"
     }
   ],
-  "addresses_timeline": [
-    "406 Monterey Pl, Los Altos, CA 94022",
-    "1937 Buchanan St, San Francisco, CA 94115",
-    "11 Ross Dr, Moraga, CA 94556"
-  ],
-  "education": [
+
+  "closed_accounts": [
     {
-      "school": "University of Oxford - Saïd Business School",
-      "degree": "MBA",
-      "start": "2013-01-01",
-      "end": "2014-12-31"
-    }
-  ],
-  "jobs": [
+      "creditor": "JPMCB Card Services",
+      "opened": "2011-07-19",
+      "closed": "2019-08-01",
+      "type": "Installment",
+      "balance": 0,
+      "credit_limit": 0,
+      "payment_status": "Closed",
+      "remarks": "No negative history"
+    },
     {
-      "company": "Peakline Partners",
-      "title": "Managing Director",
-      "start": "2023-05-01"
+      "creditor": "JPMCB Card Services",
+      "opened": "2013-08-28",
+      "closed": "2016-10-16",
+      "balance": 0,
+      "credit_limit": 0,
+      "payment_status": "Closed",
+      "remarks": "Closed in good standing"
+    },
+    {
+      "creditor": "AMERICAN HONDA FINANCE",
+      "opened": "2019-12-01",
+      "closed": "2024-07-15",
+      "loan_type": "Auto Installment",
+      "original_amount": 0,
+      "balance": 0,
+      "payment_status": "Closed",
+      "remarks": "No delinquencies, paid as agreed"
     }
-  ],
-  "family": {
-    "core": [
-      {"name": "Lee James Danforth", "age": 76, "relation": "Father"},
-      {"name": "Kathleen J. Danforth", "age": 78, "relation": "Mother"}
-    ]
-  },
-  "associates": [
-    {"name": "Gregory Wayne Oden", "age": 37, "location": "Dublin, OH"}
-  ],
-  "neighbors": [
-    {"name": "William J. Knudson", "age": 41, "address": "10 Ross Dr, Moraga, CA"}
-  ],
-  "network": {
-    "addresses": [
-      {"id": "addr_1", "label": "11 Ross Dr, Moraga, CA"},
-      {"id": "addr_2", "label": "406 Monterey Pl, Los Altos, CA"}
-    ],
-    "people": [
-      {"id": "p_1", "label": "James L. Danforth"},
-      {"id": "p_2", "label": "Brian Danforth"}
-    ],
-    "edges": [
-      {"from": "addr_1", "to": "p_1"},
-      {"from": "addr_2", "to": "p_2"}
-    ]
-  }
+  ]
 }
