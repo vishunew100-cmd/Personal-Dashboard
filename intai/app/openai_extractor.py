@@ -1,73 +1,81 @@
-import openai
-import os
 import json
-import numpy as np
+import os
+import re
+from openai import OpenAI
 
-from app.embeddings import embed_chunks, embed_query
-
-openai.api_key = os.getenv("OPENAI_API_KEY")
+client = OpenAI()
 
 SYSTEM_PROMPT = """
-You are a structured data extraction engine.
-
-Multiple documents belong to the SAME person.
+You extract structured information from documents.
 
 Rules:
-- Merge data across documents
-- Prefer repeated and consistent values
-- Do NOT infer missing facts
-- Output MUST strictly match the JSON schema
-- Return ONLY valid JSON
+- Use ONLY facts present in the text.
+- Do NOT guess or hallucinate.
+- If a field is missing, return:
+  - "" for strings
+  - [] for arrays
+  - 0 for numbers
+- Return EXACTLY the JSON schema structure provided.
+- Output ONLY valid JSON.
+- Do NOT wrap JSON in markdown.
 """
 
-def retrieve_relevant_chunks(chunks: list[str], top_k: int = 8) -> list[str]:
-    """
-    Semantic retrieval using cosine similarity
-    """
-    chunk_embeddings = embed_chunks(chunks)
-    query_embedding = embed_query(
-        "Extract all personal, address, and credit-related information"
-    )
 
-    scores = chunk_embeddings @ query_embedding
-    top_indices = np.argsort(scores)[-top_k:][::-1]
-
-    return [chunks[i] for i in top_indices]
-
+def _clean_json(text: str) -> str:
+    """Remove ```json fences if model adds them"""
+    text = text.strip()
+    text = re.sub(r"^```json", "", text, flags=re.IGNORECASE)
+    text = re.sub(r"^```", "", text)
+    text = re.sub(r"```$", "", text)
+    return text.strip()
 
 def extract_from_documents(chunks: list[str], schema: dict) -> dict:
-    relevant_chunks = retrieve_relevant_chunks(chunks)
+    """
+    SIMPLE, RELIABLE extractor:
+    - Sends ALL text to model
+    - No tools
+    - No retrieval
+    - Saves output JSON named after person
+    """
 
-    context = "\n\n".join(
-        f"--- DOCUMENT CHUNK {i+1} ---\n{chunk}"
-        for i, chunk in enumerate(relevant_chunks)
-    )
+    full_text = "\n\n".join(chunks)
 
-    response = openai.ChatCompletion.create(
-        model="gpt-4o",
-        temperature=0,
-        messages=[
-            {"role": "system", "content": SYSTEM_PROMPT},
-            {
-                "role": "user",
-                "content": f"""
+    user_prompt = f"""
 DOCUMENT TEXT:
-{context}
+--------------------
+{full_text}
+--------------------
 
-OUTPUT JSON SCHEMA:
+Extract structured data using EXACTLY this schema:
+
 {json.dumps(schema, indent=2)}
 
-Instructions:
-- Produce ONE unified JSON object
-- Match schema exactly
+STRICT:
+- Output ONLY valid JSON
+- No markdown
+- No explanation
 """
-            }
+
+    response = client.responses.create(
+        model="gpt-4.1-mini",
+        temperature=0,
+        input=[
+            {"role": "system", "content": SYSTEM_PROMPT},
+            {"role": "user", "content": user_prompt},
         ],
-        response_format={
-            "type": "json_schema",
-            "json_schema": schema
-        },
-        max_tokens=3000
+        max_output_tokens=5000,
     )
 
-    return json.loads(response["choices"][0]["message"]["content"])
+    raw_text = response.output_text
+    cleaned = _clean_json(raw_text)
+
+    try:
+        parsed = json.loads(cleaned)
+    except Exception as e:
+        return {
+            "error": "Model returned invalid JSON",
+            "exception": str(e),
+            "model_output": raw_text,
+        }
+
+    return parsed

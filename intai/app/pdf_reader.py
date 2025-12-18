@@ -26,5 +26,4 @@ def extract_text_from_pdf(pdf_bytes: bytes) -> str:
         ocr_text = pytesseract.image_to_string(img)
 
         extracted_text.append(ocr_text)
-
     return "\n\n".join(extracted_text)

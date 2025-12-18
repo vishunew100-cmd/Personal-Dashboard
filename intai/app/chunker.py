@@ -11,5 +11,4 @@ def chunk_text(text: str, max_tokens=800, overlap=100):
         chunk = " ".join(words[start:end])
         chunks.append(chunk)
         start += max_tokens - overlap
-
     return chunks
