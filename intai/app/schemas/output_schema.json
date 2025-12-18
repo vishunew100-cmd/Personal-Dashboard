@@ -1,256 +1,233 @@
 {
-  "identity": {
-    "name": "James L. Danforth",
-    "dob": "1982-09-30",
-    "age": 43,
-    "current_address": "11 Ross Dr, Moraga, CA 94556",
-    "aliases": ["Jay L. Danforth", "James Lee Danforth", "James Danforth"],
-    "ssn": "605-03-5594",
-    "DL": "",
-    "MMN": ""
-  },
-
-  "username": ["jamesdanforth", "jaydanforth"],
-
-  "contacts": {
-    "phones": ["650-207-2484", "415-852-0445", "415-416-6034", "415-346-6133"],
-    "emails": [
-      "jaydanforth@gmail.com",
-      "jddanforth@aol.com",
-      "james@truecapitalmgmt.com",
-      "jdanforth@cressetpartners.com",
-      "jdanforth@tweisel.com",
-      "danforth@callan.com",
-      "jdanforth@packard.org",
-      "laura.woolston@gmail.com",
-      "lilgjs94@yahoo.com",
-      "kkdanforth@aol.com"
-    ]
-  },
-
-  "kpis": {
-    "open_accounts": 3,
-    "closed_accounts": 3,
-    "total_credit_limit": 49200,
-    "current_total_balance": 10127
-  },
-
-  "criminal_history": {
-    "case_numbers": ["BB302017"],
-    "crime": "NA"
-  },
-
-  "addresses_timeline": [
-    {
-      "place": "406 Monterey Pl, Los Altos, CA 94022, USA",
-      "google_maps_link": "https://maps.google.com/?q=406+Monterey+Pl,+Los+Altos,+CA+94022,+USA",
-      "started": "-",
-      "left": "-",
-      "remarks": "NA"
+  "type": "object",
+  "properties": {
+    "identity": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "dob": { "type": "string" },
+        "age": { "type": "integer" },
+        "current_address": { "type": "string" },
+        "aliases": { "type": "array", "items": { "type": "string" } },
+        "ssn": { "type": "string" },
+        "DL": { "type": "string" },
+        "MMN": { "type": "string" }
+      },
+      "required": [
+        "name", "dob", "age", "current_address",
+        "aliases", "ssn", "DL", "MMN"
+      ]
     },
-    {
-      "place": "1937 Buchanan St, San Francisco, CA 94115, USA",
-      "google_maps_link": "https://maps.google.com/?q=1937+Buchanan+St,+San+Francisco,+CA+94115,+USA",
-      "started": "2006",
-      "left": "2010",
-      "remarks": "NA"
+
+    "username": {
+      "type": "array",
+      "items": { "type": "string" }
     },
-    {
-      "place": "2264 Bush St, San Francisco, CA 94115, USA",
-      "google_maps_link": "https://maps.google.com/?q=2264+Bush+St,+San+Francisco,+CA+94115,+USA",
-      "started": "2008",
-      "left": "2011",
-      "remarks": "NA"
+
+    "contacts": {
+      "type": "object",
+      "properties": {
+        "phones": { "type": "array", "items": { "type": "string" } },
+        "emails": { "type": "array", "items": { "type": "string" } }
+      },
+      "required": ["phones", "emails"]
     },
-    {
-      "place": "3130 Webster St, San Francisco, CA 94123, USA",
-      "google_maps_link": "https://maps.google.com/?q=3130+Webster+St,+San+Francisco,+CA+94123,+USA",
-      "started": "2011",
-      "left": "2018",
-      "remarks": "NA"
+
+    "kpis": {
+      "type": "object",
+      "properties": {
+        "open_accounts": { "type": "integer" },
+        "closed_accounts": { "type": "integer" },
+        "total_credit_limit": { "type": "number" },
+        "current_total_balance": { "type": "number" }
+      },
+      "required": [
+        "open_accounts",
+        "closed_accounts",
+        "total_credit_limit",
+        "current_total_balance"
+      ]
     },
-    {
-      "place": "11 Ross Dr, Moraga, CA 94556, USA",
-      "google_maps_link": "https://maps.google.com/?q=11+Ross+Dr,+Moraga,+CA+94556,+USA",
-      "started": "2016",
-      "left": "Present",
-      "remarks": "Owned"
+
+    "criminal_history": {
+      "type": "object",
+      "properties": {
+        "case_numbers": { "type": "array", "items": { "type": "string" } },
+        "crime": { "type": "string" }
+      },
+      "required": ["case_numbers", "crime"]
+    },
+
+    "addresses_timeline": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "place": { "type": "string" },
+          "google_maps_link": { "type": "string" },
+          "started": { "type": "string" },
+          "left": { "type": "string" },
+          "remarks": { "type": "string" }
+        },
+        "required": ["place", "google_maps_link", "started", "left", "remarks"]
+      }
+    },
+
+    "education": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "school": { "type": "string" },
+          "degree": { "type": "string" },
+          "years": { "type": "string" },
+          "remarks": { "type": "string" }
+        },
+        "required": ["school", "degree", "years", "remarks"]
+      }
+    },
+
+    "jobs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "company": { "type": "string" },
+          "title": { "type": "string" },
+          "start": { "type": "string" },
+          "end": { "type": "string" }
+        },
+        "required": ["company", "title", "start", "end"]
+      }
+    },
+
+    "family": {
+      "type": "object",
+      "properties": {
+        "core": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string" },
+              "age": { "type": "number" },
+              "relation": { "type": "string" }
+            },
+            "required": ["name", "age", "relation"]
+          }
+        },
+        "extended": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string" },
+              "age": { "type": "number" },
+              "relation": { "type": "string" }
+            },
+            "required": ["name", "age", "relation"]
+          }
+        }
+      },
+      "required": ["core", "extended"]
+    },
+
+    "associates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "age": { "type": "number" },
+          "location": { "type": "string" }
+        },
+        "required": ["name", "age", "location"]
+      }
+    },
+
+    "neighbors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "age": { "type": "number" },
+          "address": { "type": "string" }
+        },
+        "required": ["name", "age", "address"]
+      }
+    },
+
+    "social_profiles": {
+      "type": "object",
+      "properties": {
+        "LinkedIn": { "type": "string" },
+        "Facebook": { "type": "string" },
+        "Twitter": { "type": "string" },
+        "Instagram": { "type": "string" },
+        "Flickr": { "type": "string" },
+        "Myspace": { "type": "string" }
+      },
+      "required": [
+        "LinkedIn",
+        "Facebook",
+        "Twitter",
+        "Instagram",
+        "Flickr",
+        "Myspace"
+      ]
+    },
+
+    "open_accounts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "creditor": { "type": "string" },
+          "opened": { "type": "string" },
+          "past_due": { "type": "number" },
+          "current_balance": { "type": "number" },
+          "credit_limit": { "type": "number" },
+          "high_balance": { "type": "number" },
+          "status": { "type": "string" },
+          "last_payment": { "type": "string" },
+          "updated": { "type": "string" }
+        },
+        "required": [
+          "creditor", "opened", "past_due", "current_balance",
+          "credit_limit", "high_balance", "status",
+          "last_payment", "updated"
+        ]
+      }
+    },
+
+    "closed_accounts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "creditor": { "type": "string" },
+          "opened": { "type": "string" },
+          "closed": { "type": "string" },
+          "type": { "type": "string" },
+          "balance": { "type": "number" },
+          "credit_limit": { "type": "number" },
+          "payment_status": { "type": "string" },
+          "remarks": { "type": "string" },
+          "loan_type": { "type": "string" },
+          "original_amount": { "type": "number" }
+        },
+        "required": [
+          "creditor", "opened", "closed", "balance",
+          "credit_limit", "payment_status", "remarks"
+        ]
+      }
     }
-  ],
-
-  "education": [
-    {
-      "school": "University of Oxford",
-      "degree": "MBA",
-      "years": "2013-2014",
-      "remarks": "Saïd Business School"
-    },
-    {
-      "school": "Bucknell University",
-      "degree": "NA",
-      "years": "2001-2005",
-      "remarks": "No degree listed"
-    },
-    {
-      "school": "Los Altos High School",
-      "degree": "NA",
-      "years": "-",
-      "remarks": "No degree listed"
-    }
-  ],
-
-  "jobs": [
-    {
-      "company": "Peakline Partners",
-      "title": "Managing Director/Co-Head of Venture",
-      "start": "2023",
-      "end": "-"
-    },
-    {
-      "company": "Cresset Partners",
-      "title": "Director",
-      "start": "2023",
-      "end": "-"
-    },
-    {
-      "company": "True Capital Management",
-      "title": "Investment Management",
-      "start": "2015",
-      "end": "2023"
-    },
-    {
-      "company": "Callan Associates",
-      "title": "Investment Management",
-      "start": "2008",
-      "end": "2013"
-    },
-    {
-      "company": "Packard Foundation",
-      "title": "Financial Analyst (Philanthropy)",
-      "start": "2007",
-      "end": "2008"
-    },
-    {
-      "company": "Thomas Weisel Partners",
-      "title": "PCSA (Investment Banking)",
-      "start": "2006",
-      "end": "2007"
-    },
-    {
-      "company": "WestEnd Capital Management",
-      "title": "Operations Manager",
-      "start": "2005",
-      "end": "2007"
-    },
-    {
-      "company": "Trusted Insight Inc.",
-      "title": "Role not listed",
-      "start": "-",
-      "end": "-"
-    },
-    {
-      "company": "Stock Baron",
-      "title": "Role not listed",
-      "start": "-",
-      "end": "-"
-    }
-  ],
-
-  "family": {
-    "core": [
-      { "name": "Lee James Danforth", "age": 76, "relation": "Father" },
-      { "name": "Kathleen J. Danforth", "age": 78, "relation": "Mother" },
-      { "name": "Bryan Reed Danforth", "age": 40, "relation": "Brother" },
-      { "name": "Laura N. Woolston", "age": 40, "relation": "Spouse" }
-    ],
-    "extended": [
-      { "name": "Brian Danforth", "age": 45, "relation": "Uncle" },
-      { "name": "Susan Danforth", "age": 43, "relation": "Aunt" }
-    ]
   },
-
-  "associates": [
-    { "name": "Gregory Wayne Oden", "age": 37, "location": "Dublin, OH" }
-  ],
-
-  "neighbors": [
-    { "name": "William J. Knudson", "age": 41, "address": "10 Ross Dr, Moraga, CA" }
-  ],
-
-  "social_profiles": {
-    "LinkedIn": "https://www.linkedin.com/in/james-danforth-9b7244b/",
-    "Facebook": "https://www.facebook.com/jay.danforth.5",
-    "Twitter": "https://twitter.com/jaydanforth",
-    "Instagram": "https://www.instagram.com/jaydanforth/",
-    "Flickr": "https://www.flickr.com/people/jamesldanforth/",
-    "Myspace": "https://myspace.com/jaydanforth"
-  },
-
-  "open_accounts": [
-    {
-      "creditor": "JPMCB Card Services",
-      "opened": "2011-12-22",
-      "past_due": 0,
-      "current_balance": 1049,
-      "credit_limit": 8600,
-      "high_balance": 8600,
-      "status": "Current",
-      "last_payment": "2025-10-06",
-      "updated": "2025-10-26"
-    },
-    {
-      "creditor": "JPMCB Card Services",
-      "opened": "2014-08-07",
-      "past_due": 0,
-      "current_balance": 8054,
-      "credit_limit": 26100,
-      "high_balance": 26100,
-      "status": "Current",
-      "last_payment": "2025-10-06",
-      "updated": "2025-10-24"
-    },
-    {
-      "creditor": "Apple Card (Goldman Sachs)",
-      "opened": "2024-10-01",
-      "past_due": 75,
-      "current_balance": 1024,
-      "credit_limit": 14500,
-      "high_balance": 14500,
-      "status": "Current",
-      "last_payment": "",
-      "updated": "2025-10-01"
-    }
-  ],
-
-  "closed_accounts": [
-    {
-      "creditor": "JPMCB Card Services",
-      "opened": "2011-07-19",
-      "closed": "2019-08-01",
-      "type": "Installment",
-      "balance": 0,
-      "credit_limit": 0,
-      "payment_status": "Closed",
-      "remarks": "No negative history"
-    },
-    {
-      "creditor": "JPMCB Card Services",
-      "opened": "2013-08-28",
-      "closed": "2016-10-16",
-      "balance": 0,
-      "credit_limit": 0,
-      "payment_status": "Closed",
-      "remarks": "Closed in good standing"
-    },
-    {
-      "creditor": "AMERICAN HONDA FINANCE",
-      "opened": "2019-12-01",
-      "closed": "2024-07-15",
-      "loan_type": "Auto Installment",
-      "original_amount": 0,
-      "balance": 0,
-      "payment_status": "Closed",
-      "remarks": "No delinquencies, paid as agreed"
-    }
+  "required": [
+    "identity", "username", "contacts", "kpis", "criminal_history",
+    "addresses_timeline", "education", "jobs",
+    "family", "associates", "neighbors",
+    "social_profiles", "open_accounts", "closed_accounts"
   ]
 }
